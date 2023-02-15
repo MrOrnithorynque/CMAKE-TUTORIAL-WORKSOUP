@@ -37,7 +37,7 @@ sudo apt-get install -y build-essential libssl-dev
 Download the CMake source code archive from the official website using the following command:
 
 ```bash
-wget https://github.com/Kitware/CMake/releases/download/v3.26.0/cmake-3.26.0.tar.gz
+wget https://github.com/Kitware/CMake/releases/download/v3.26.0-rc2/cmake-3.26.0-rc2-linux-x86_64.tar.gz
 ```
 
 Extract the archive by running the following command:
