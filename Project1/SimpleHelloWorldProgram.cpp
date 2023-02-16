@@ -8,139 +8,30 @@
  * @copyright Copyright (c) 2023
  *
  */
+#include <iostream>
 
-#include <cstdio>
-#include <string.h>
+#define CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FONCTION_MAIN int main(int argc, char const *argv[]) {
 
-const int POOL_SIZE = 1024;
+#define CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN }
 
-size_t myStrlen(const char *str)
+int afficher_character_h_puis_e_puis_l_puis_l_puis_o_puis_espace_puis_w_puis_o_puis_r_puis_l_puis_d()
 {
-    size_t len = 0;
+    int n = 0;
 
-    while (*str)
+again:
+    for (int i = n == 0 ? 'H' : n == 1 ? 'E' : (n == 2 || n == 3) ? 'L' : n == 4 ? 'O' : n == 5 ? ' ' : n == 6 ? 'W' : n == 7 ? 'O' : n == 8 ? 'R' : n == 9 ? 'L' : n == 10 ? 'D' : 0; i;)
     {
-        ++len;
-        ++str;
-    }
-
-    return len;
-}
-
-void *myMemcpy(void *dest, const void *src, size_t n)
-{
-    char *destPtr = reinterpret_cast<char *>(dest);
-    const char *srcPtr = reinterpret_cast<const char *>(src);
-
-    for (size_t i = 0; i < n; ++i)
-    {
-        *(destPtr + i) = *(srcPtr + i);
-    }
-
-    return dest;
-}
-
-class FixedPoolAllocator
-{
-public:
-    FixedPoolAllocator() : nextFreeBlock_(memoryPool_), numFreeBlocks_(POOL_SIZE / sizeof(FixedPoolAllocator)) {}
-
-    void *allocate(size_t size)
-    {
-        if (size > sizeof(FixedPoolAllocator))
+        std::cout << (char)i;
+        ++n;
+        if (i)
         {
-            return nullptr;
-        }
-
-        if (numFreeBlocks_ <= 0)
-        {
-            return nullptr;
-        }
-
-        void *result = nextFreeBlock_;
-
-        nextFreeBlock_ += size;
-        numFreeBlocks_ -= size / sizeof(FixedPoolAllocator);
-
-        return result;
-    }
-
-    void deallocate(void *ptr)
-    {
-        // Deallocation not supported
-    }
-
-private:
-
-    char memoryPool_[POOL_SIZE];
-    char *nextFreeBlock_;
-    size_t numFreeBlocks_;
-};
-
-class String
-{
-public:
-    String() : data_(nullptr), size_(0) {}
-
-    void initialize(const char *str)
-    {
-        size_ = strlen(str);
-        data_ = reinterpret_cast<char *>(allocator_.allocate(size_ + 1));
-        memcpy(data_, str, size_ + 1);
-    }
-
-    ~String()
-    {
-        allocator_.deallocate(data_);
-    }
-
-    const char *c_str() const
-    {
-        return data_;
-    }
-
-private:
-    char *data_;
-    size_t size_;
-    FixedPoolAllocator allocator_;
-};
-
-class OutputDevice
-{
-public:
-    OutputDevice() {}
-
-    void print(const char *str)
-    {
-        while (*str)
-        {
-            putc(*str, stdout);
-            ++str;
+            goto again;
         }
     }
-};
-
-class HelloWorld
-{
-public:
-    void sayHello()
-    {
-        String message;
-        message.initialize("Hello World!");
-        outputDevice_.print(message.c_str());
-    }
-
-private:
-    OutputDevice outputDevice_;
-};
-
-int main()
-{
-    FixedPoolAllocator allocator;
-    HelloWorld* helloWorld = new HelloWorld();
-
-    helloWorld->sayHello();
-    helloWorld->~HelloWorld();
-    allocator.deallocate(helloWorld);
     return 0;
-}
+CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN
+
+CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FONCTION_MAIN
+    afficher_character_h_puis_e_puis_l_puis_l_puis_o_puis_espace_puis_w_puis_o_puis_r_puis_l_puis_d();
+    return INT32_MAX;
+CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN
