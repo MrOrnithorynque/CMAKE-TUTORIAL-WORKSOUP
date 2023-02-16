@@ -1,14 +1,5 @@
-/**
- * @file SimpleHelloWorldProgram.cpp
- * @author your name (you@domain.com)
- * @brief
- * @version 0.1
- * @date 2023-02-16
- *
- * @copyright Copyright (c) 2023
- *
- */
 #include <iostream>
+#include "x-456.hpp"
 
 #define CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FONCTION_MAIN int main(int argc, char const *argv[]) {
 

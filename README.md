@@ -31,8 +31,8 @@ We are here to help you. Even if most of the time most of your responses will be
 
 Before we begin, you will need the following:
 
-- CMake installed on your system.
-- The SFML (not CSFML) library installed on your system.
+- [CMake](https://cmake.org/) installed on your system.
+- The [SFML](https://www.sfml-dev.org/index-fr.php) (not CSFML) library installed on your system.
 - A C/C++ compiler installed on your system.
 - Knowing how to read documentation. (you will need it a lot in this tutorial, but do not worry, the CMake documentation is very ~~bad~~ well written :) .)
 
@@ -55,6 +55,7 @@ To learn more about how to **install the SFML** library on Linux, Windows or Mac
 - project()
 - set()
 - add_executable()
+- target_include_directories()
 
 First, let's create a CMake file to compile a single C/C++ file. In this example, we will create a CMake file to compile a "hello world" program.
 
@@ -73,15 +74,33 @@ By setting the minimum version of CMake in our project, we can ensure that the f
 
 Then we will create a project using the [`project()`](https://cmake.org/cmake/help/latest/command/project.html) command. We will name the project "HelloWorldProject" (or anything you want).
 
-Next, we will create a variable called "SRCS" (for our sources) and set it to the name of the source file we want to compile.
+Set the C++ standard to C++17 using the [`set()`](https://cmake.org/cmake/help/latest/command/set.html) command.
 
-To create a variable in CMake, we use the [`set()`](https://cmake.org/cmake/help/latest/command/set.html) command. The first argument is the name of the variable, and the second argument is the value of the variable, here it will be "SimpleHelloWorldProgram.cpp".
+The variable `CMAKE_CXX_STANDARD` is a CMake variable that specifies the C++ standard to use when compiling the project. We will set it to 17, which is the C++17 standard.
+
+To create / redefine a variable in CMake, we use the [`set()`](https://cmake.org/cmake/help/latest/command/set.html) command. The first argument is the name of the variable, and the second argument is the value of the variable or the list of values of the variable.
+
+Next, we will create a variable called `SRCS` (for our sources) and set it to the name of the source file we want to compile. We will also create a variable called `INCLUDES` (for our includes) and set it to the name of the directory where our header files are located.
 
 > When your file is in a different directory, you can specify the path to the file in the value of the variable. For example, if your file is in the "src" directory, you can set the value of the variable to "src/SimpleHelloWorldProgram.cpp".
 
-Finally, we will use the [`add_executable()`](https://cmake.org/cmake/help/latest/command/add_executable.html) command to create an executable from the source file. To name the executable, we will use the [`PROJECT_NAME`](https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html) variable. This variable is automatically created by CMake and contains the name of the project. This variable as been set when you called the [`project()`](https://cmake.org/cmake/help/latest/command/project.html) function. Also, we will use the `SRCS` variable to specify the source file we want to compile.
+We are almost at the end, we will use the [`add_executable()`](https://cmake.org/cmake/help/latest/command/add_executable.html) command to create an executable from the source file. To name the executable, we will use the [`PROJECT_NAME`](https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html) variable. This variable is automatically created by CMake and contains the name of the project. This variable as been set when you called the [`project()`](https://cmake.org/cmake/help/latest/command/project.html) command. Also, we will use the `SRCS` variable to specify the source file we want to compile.
 
 > To use a variable in CMake, we use the `${}` syntax.
+
+Finally, we will use the [`target_include_directories()`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to specify the directories where our header files are located. We will use the `INCLUDES` variable to specify the directory where our header files are located.
+
+> You will specify your target in the first argument. Your "target" is the executable you want to create, so its name of your project. And then you will specify the directories where your header files are located in the second argument, so your INCLUDE variable.
+
+<details><summary>More precision with PUBLIC, PRIVATE, and INTERFACE keywords.</summary>
+In CMake, PUBLIC, PRIVATE, and INTERFACE are keywords used to specify the visibility of properties and targets.
+
+PUBLIC means that a property or target is part of the public API of a library or executable target, and should be available to other targets that depend on the current target. This means that if another target depends on the current target, it will also have access to the public properties or targets included with PUBLIC.
+
+PRIVATE, on the other hand, means that a property or target is used only within the current target itself, and should not be visible to other targets that depend on the current target. This means that if another target depends on the current target, it will not have access to the private properties or targets included with PRIVATE.
+
+In summary, PUBLIC, PRIVATE, and INTERFACE are used to specify the visibility of properties and targets in CMake, with PUBLIC indicating that a property or target is part of the public API, PRIVATE indicating that it is used only within the current target, and INTERFACE indicating that it should be visible to other targets that depend on the current target, but should not be used within the current target itself.
+</details>
 
 Now that we have created a CMake file to compile a single file, let's compile it.
 
@@ -112,15 +131,17 @@ Then to compile the project, run the following command:
 cmake --build .
 ```
 
-This will compile the SimpleHelloWorldProgram.cpp file and create an executable named by the name of the project in the build directory.
+This will compile the SimpleHelloWorldProgram.cpp file and create an executable named by the name of the project and move it to the build directory.
 
 But, if you want to compile the project in a different directory, you can specify the path to the directory you want to compile the project in.
 
 The [`CMAKE_RUNTIME_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_RUNTIME_OUTPUT_DIRECTORY.html) variable is used to specify the path to the directory where the executable will be created.
 
-CMake automatically creates this variable when you call the [`project()`](https://cmake.org/cmake/help/latest/command/project.html) function. This variable contains the path to the directory where the executable will be created.
+CMake automatically creates this variable when you call the [`project()`](https://cmake.org/cmake/help/latest/command/project.html) command. This variable contains the path to the directory where the executable will be created.
 
 So you can reset the value of this variable to the path to the directory where you want to compile the project.
+
+> Set the runtime directorie before the [`add_executable()`](https://cmake.org/cmake/help/latest/command/add_executable.html) command.
 
 You can use the [`CMAKE_SOURCE_DIR`](https://cmake.org/cmake/help/latest/variable/CMAKE_SOURCE_DIR.html) variable to get the path to the directory where the CMakeLists.txt file is located.
 
@@ -138,17 +159,44 @@ In this section you will learn to use CMake in a more advanced way. You will lea
 
 ### Project2 - Linking a library (10 min max)
 
+#### Notions you will learn :
+
+- target_link_libraries()
+- find_package()
+- include()
+- FetchContent_Declare()
+- FetchContent_MakeAvailable()
+
 The library you will link to your project is the SFML library.
 
 SFML (as your probably know) is a library that allows you to create games and graphical applications.
 
-You will learn how to use the `target_link_libraries` command, and how to use the `find_package` command to link the SFML library to your project.
+You will learn how to use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command, and how to use the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command to link the SFML library to your project.
+
+First, like in the previous section, navigate into the Project2 directory and create a CMakeLists.txt file, then :
+
+- Set the minimum version of CMake to 3.20.
+- Then create a project named "SFMLProject".
+- Set the C++ standard to C++17.
+- Set the `SRCS` and `INCLUDE` variables.
+- Then create an executable from the source file.
+- Link the `INCLUDE` variable to the executable.
+
+> You should know how to do this by now.
+
+If you try to compile the project, you will get an error because the SFML library is not linked to the project.
+
+To do so you will first use the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command to find the SFML library. It will search for the library in the system and set the variables that are used to link the library to the project.
+
+Then you will use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to link the SFML library to the project. Like all target_... commands, it takes the target as the first argument.
+
+> Use it after the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, because if you want to specify a target (the first argument), the target must be created before, with the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command or the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command.
 
 #### Downloading a library (10 min max)
 
-With CMake, you can download a library from the internet and link it to your project. It is the main principle of CM
+With CMake, you can download a library from the internet and link it to your project. It is the main principle of CMake, manage dependencies.
 
-In this section, we will download the SFML library from the internet and link it to our project.
+In this section, we will download the SFML library from the internet using CMake and link it to our project.
 
 ### Project3 - Building a library (20 min max)
 
