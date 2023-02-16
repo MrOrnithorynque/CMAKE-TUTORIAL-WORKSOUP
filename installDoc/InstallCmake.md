@@ -1,14 +1,16 @@
-# CMAKE-TUTORIAL-WORKSOUP
-## CMAKE Installation
+*CMAKE-TUTORIAL-WORKSOUP*
 
-### Linux
+# CMAKE Installation
+
+## Linux
+
 Here is a brief guide to installing version 3.26 of CMake on a Linux system.
 
-#### If you don't have CMake
+### If you don't have CMake
 
 If you have not installed CMake on your system, you can follow the instructions below to install it.
 
-#### If you do have CMake
+### If you do have CMake
 
 If you do have cmake but it is a version older than 3.20, remote it and you can follow the instructions below to upgrade it.
 
@@ -23,7 +25,7 @@ To remove CMake from your system, run the following command:
 ```bash
 sudo apt-get remove cmake
 ```
-#### To install CMake*
+### To install CMake*
 
 Open a terminal window and enter the following command to update the package list:
 
@@ -80,7 +82,7 @@ This should output the version number of CMake that you just installed.
 
 That's it! You should now have CMake version 3.26.0 installed on your Linux system.
 
-### Windows
+## Windows
 Here is a brief guide to installing version 3.26 of CMake on a Windows system:
 
 Download the CMake installer from the official website by visiting the following link: https://cmake.org/download/
@@ -101,7 +103,7 @@ This should output the version number of CMake that you just installed.
 
 That's it! You should now have CMake version 3.26.0 installed on your Windows system.
 
-### MacOS
+## MacOS
 Here is a brief guide to installing version 3.26 of CMake on a macOS system:
 
 Open a terminal window and install the Xcode command-line tools by running the following command:
