@@ -76,7 +76,7 @@ Then we will create a project using the [`project()`](https://cmake.org/cmake/he
 
 Set the C++ standard to C++17 using the [`set()`](https://cmake.org/cmake/help/latest/command/set.html) command.
 
-The variable `CMAKE_CXX_STANDARD` is a CMake variable that specifies the C++ standard to use when compiling the project. We will set it to 17, which is the C++17 standard.
+The variable [`CMAKE_CXX_STANDARD`](https://cmake.org/cmake/help/latest/variable/CMAKE_CXX_STANDARD.html) is a CMake variable that specifies the C++ standard to use when compiling the project. We will set it to 17, which is the C++17 standard.
 
 To create / redefine a variable in CMake, we use the [`set()`](https://cmake.org/cmake/help/latest/command/set.html) command. The first argument is the name of the variable, and the second argument is the value of the variable or the list of values of the variable.
 
@@ -157,7 +157,7 @@ Try to execute it now!
 
 In this section you will learn to use CMake in a more advanced way. You will learn how to use CMake to use a library (how to link it) and how to build a library.
 
-### Project2 - Linking a library (10 min max)
+### Project2 - Linking a library (15 min max)
 
 #### Notions you will learn :
 
@@ -192,15 +192,47 @@ Then you will use the [`target_link_libraries`](https://cmake.org/cmake/help/lat
 
 > Use it after the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, because if you want to specify a target (the first argument), the target must be created before, with the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command or the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command.
 
-#### Downloading a library (10 min max)
+And finally, use the [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to include the SFML library header files to the project.
+
+Now reconfigure then compile the project...
+
+And tada! You have linked the SFML library to your project.
+
+Try to execute it now!
+
+#### Downloading a library
 
 With CMake, you can download a library from the internet and link it to your project. It is the main principle of CMake, manage dependencies.
 
 In this section, we will download the SFML library from the internet using CMake and link it to our project.
 
+Include the [`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html) module with the [`include`](https://cmake.org/cmake/help/latest/command/include.html) command.
+
+> The include command is used to include a CMake file and so use the commands declared in it. (yes you can make your own commands with CMake)
+
+Use the [`FetchContent_Declare`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare) command to download the SFML library from the internet.
+
+> You can use the git repository of the SFML library to download it.
+
+Then use the [`FetchContent_MakeAvailable`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_makeavailable) command to make the library available to the project.
+
+Use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to link the SFML library to the project.
+
+And finally, use the [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to include the SFML library header files to the project.
+
 ### Project3 - Building a library (20 min max)
 
-You will learn how to build SFML and how to use it in your own project.
+In this section, you will learn how to build a library with CMake.
+
+#### Notions you will learn :
+
+- add_library()
+
+Like the first section, navigate into the Project3 directory and create a CMakeLists.txt file, do the exact same thing as in the first section, but instead of creating an executable, create a library.
+
+Use the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command to create a library.
+
+Its behavior is the same as the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, but it creates a library instead of an executable.
 
 ### Project4 - Creating a CMake project for an entire project
 
