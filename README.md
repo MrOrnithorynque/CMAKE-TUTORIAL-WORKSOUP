@@ -1,7 +1,7 @@
 *CMAKE-TUTORIAL-WORKSOUP*
 # Writing Your First CMake and Compiling a C++ Project with SFML
 
-In this tutorial, we will walk through the process of installing CMake, creating a CMake file to compile a single file, and then, creating a CMake file to compile an entire project that use dependencies.
+In this tutorial, we will walk through the process of **installing CMake**, creating a CMake file to **compile a single file**, and then, creating a CMake file to **compile an entire project that use dependencies**.
 
 ## CMake summary
 
@@ -44,7 +44,7 @@ To learn more about how to **install CMake** on Linux, Windows or MacOS, check o
 
 To learn more about how to **install the SFML** library on Linux, Windows or MacOS, check out the [installation guide](installDoc/InstallSFML.md).
 
-## Introduction (20 min max)
+## Introduction (25 min max)
 
 ### Project1 - Creating a CMake project for a single file
 
@@ -92,7 +92,7 @@ We are almost at the end, we will use the [`add_executable()`](https://cmake.org
 
 > To use a variable in CMake, we use the `${}` syntax.
 
-Finally, we will use the [`target_include_directories()`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to specify the directories where our header files are located. We will use the `INCLUDES` variable to specify the directory where our header files are located.
+Finally, we will use the [`target_include_directories()`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to specify the directories where our header files are located. We will use the `INCLUDES` variable to specify the directory where our header files are located and the `PUBLIC` keyword to specify that the directory is public.
 
 > You will specify your target in the first argument. Your "target" is the executable you want to create, so its name of your project. And then you will specify the directories where your header files are located in the second argument, so your INCLUDE variable.
 
@@ -166,7 +166,7 @@ Try to execute it now!
 
 In this section you will learn to use CMake in a more advanced way. You will learn how to use CMake to link any library (like SFML) and how to build a custom library.
 
-### Project2 - Linking a library (15 min max)
+### Project2 - Linking a library (30 min max)
 
 #### Fonctionnalities you will learn :
 
@@ -197,11 +197,17 @@ If you try to compile the project, you will get an error because the SFML librar
 
 To do so you will first use the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command to find the SFML library. It will search for the library in the system and set the variables that are used to link the library to the project.
 
+We will use the [`REQUIRED`](https://cmake.org/cmake/help/latest/command/find_package.html#required) option to make the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command *fail* if the library is *not found*.
+
+You can do a **google search** to find the name of the package SFML you need to use in the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command.
+
 Then you will use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to link the SFML library to the project. Like all "target_..." commands, it takes the target as the first argument.
 
 > Use it after the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, because if you want to specify a target (the first argument), the target must be created before, with the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command or the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command.
 
 And finally, use the [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to include the SFML library header files to the project.
+
+> When a package is found with the [`find_package`](https://cmake.org/cmake/help/latest/command/find_package.html) command, CMake automatically creates a variable that contains the path to the directory where the header files are located. The name of this variable is the name of the package in uppercase, with the `_INCLUDE_DIR` suffix.
 
 Now reconfigure then compile the project...
 
@@ -211,9 +217,9 @@ Try to execute it now!
 
 #### Downloading a library
 
-With CMake, you can download a library from the internet and link it to your project. It is the main principle of CMake, managing dependencies.
+With CMake, you can **download a library** from the internet and link it to your project. It is the main principle of CMake, **managing dependencies**.
 
-In this section, we will download the SFML library from the internet using CMake and link it to our project.
+In this section, we will **download the SFML library** from the internet using CMake and link it to our project.
 
 Include the [`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html) module with the [`include`](https://cmake.org/cmake/help/latest/command/include.html) command.
 
@@ -224,6 +230,8 @@ Use the [`FetchContent_Declare`](https://cmake.org/cmake/help/latest/module/Fetc
 > You can use the git repository of the SFML library to download it.
 
 Then use the [`FetchContent_MakeAvailable`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_makeavailable) command to make the library available to the project.
+
+> Because you are very intelligent, you did not put [`FetchContent_Declare`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare) **AFTER** the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html). Yes?
 
 Use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to link the SFML library to the project.
 
