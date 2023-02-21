@@ -1,9 +1,9 @@
 #include <iostream>
 #include "x-456.hpp"
 
-#define CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FONCTION_MAIN int main(int argc, char const *argv[]) {
+#define CECI_EST_UNE_MACRO_DESIGNANT_UNE_FONCTION_MAIN int main(int argc, char const *argv[]) {
 
-#define CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN }
+#define CECI_EST_UNE_MACRO_DESIGNANT_UNE_FIN_DE_FONCTION_MAIN }
 
 int afficher_character_h_puis_e_puis_l_puis_l_puis_o_puis_espace_puis_w_puis_o_puis_r_puis_l_puis_d()
 {
@@ -20,9 +20,9 @@ again:
         }
     }
     return 0;
-CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN
+CECI_EST_UNE_MACRO_DESIGNANT_UNE_FIN_DE_FONCTION_MAIN
 
-CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FONCTION_MAIN
+CECI_EST_UNE_MACRO_DESIGNANT_UNE_FONCTION_MAIN
     afficher_character_h_puis_e_puis_l_puis_l_puis_o_puis_espace_puis_w_puis_o_puis_r_puis_l_puis_d();
     return INT32_MAX;
-CECI_EST_UNE_MACRO_DÉSIGNANT_UNE_FIN_DE_FONCTION_MAIN
+CECI_EST_UNE_MACRO_DESIGNANT_UNE_FIN_DE_FONCTION_MAIN
