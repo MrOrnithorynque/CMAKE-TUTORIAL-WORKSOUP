@@ -15,6 +15,6 @@ namespace IsThatANamespaceExclamationMark
 {
     void AAAAAAAAAAAAAAA::BeginPlay()
     {
-        std::cout << ".ZERFGTEDSED????" << std::endl;
+        std::cout << ".ZERFGTEDSED????" << std::endl; std::cout << "Hello World" << std::endl;
     }
 } // namespace IsThatANamespaceExclamationMark

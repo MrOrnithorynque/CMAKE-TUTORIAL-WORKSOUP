@@ -237,7 +237,7 @@ Use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/ta
 
 And finally, use the [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to include the SFML library header files to the project.
 
-### Project3 - Building a library (20 min max)
+### Project3 - Building a library (10 min max)
 
 In this section, you will learn how to build a custom library with CMake.
 
@@ -251,29 +251,35 @@ Do everything you did in the second section, but instead of creating an executab
 
 You will not need to link the SFML.
 
+> Libraries can be linked to other libraries too, using the same command as for executables.
+
 Use the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command to create a library.
 
 Its behavior is the same as the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, but it creates a library instead of an executable.
 
 > To link a custom library to a project, you will use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to a target (executable or library).
 
-### Project4 - Creating a CMake project for an entire project
+**Configure and compile the project**, you should have a library created in the build directory.
+
+If you want to change the output directory of the library you can use the [CMAKE_ARCHIVE_OUTPUT_DIRECTORY](https://cmake.org/cmake/help/latest/variable/CMAKE_ARCHIVE_OUTPUT_DIRECTORY.html) variable. But it is **not necessary**.
+
+### Project4 - Creating a CMake project for an entire project (25 min max)
 
 #### Fonctionnalities you will learn :
 
 - add_subdirectory()
 
-In this section, we will create a CMake file to compile an entire project.
+In this section, we will create a CMake file to **compile an entire project**.
 
-There is a a new directory called "lib" in the root directory of the project, it contains the library you will build and link.
+There is a a new directory called `lib` in the root directory of the project, it contains the library you will build and link.
 
-Create a CMakeLists.txt file in the root directory of the project AND in the "lib" directory.
+Create a CMakeLists.txt file in the root directory of the project AND in the `lib` directory.
 
-Why in the "lib" directory ? Because its preferable to separate the CMake files of the project and the CMake files of the library.
+Why in the `lib` directory ? Because its preferable to separate the CMake files of the project and the CMake files of the library.
 
-So you will do the same as before, but you will create a library in the "lib" directory and link it to the project.
+So you will do the same as before, but you will create a library in the `lib` directory and link it to the project.
 
-To access the "lib" directory, you will use the [`add_subdirectory`](https://cmake.org/cmake/help/latest/command/add_subdirectory.html) command inside the root CMakeLists.txt file.
+To access the `lib` directory, you will use the [`add_subdirectory`](https://cmake.org/cmake/help/latest/command/add_subdirectory.html) command inside the root CMakeLists.txt file.
 
 ## Final Project - Creating a CMake project for your own tek or personnal project. (no time limit)
 

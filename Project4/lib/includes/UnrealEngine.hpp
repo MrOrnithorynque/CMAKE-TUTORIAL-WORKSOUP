@@ -10,7 +10,7 @@ namespace IsThatANamespaceExclamationMark
         public:
             VeryInterestingClass() = default;
             ~VeryInterestingClass() = default;
-            void print();
+            virtual void print();
         private:
             std::string _str;
     };
@@ -27,13 +27,13 @@ namespace IsThatANamespaceExclamationMark
             std::string _str;
     };
 
-    class String
+    class String : public std::string
     {
         public:
             String() = default;
             ~String() = default;
 
-            std::string zdeftgrNNOOOOOOOOON(std::string str);
+            virtual std::string zdeftgrNNOOOOOOOOON(std::string str);
 
         private:
             std::string _str;
