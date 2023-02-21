@@ -44,7 +44,7 @@ To learn more about how to **install CMake** on Linux, Windows or MacOS, check o
 
 To learn more about how to **install the SFML** library on Linux, Windows or MacOS, check out the [installation guide](installDoc/InstallSFML.md).
 
-## Introduction (15 min max)
+## Introduction (20 min max)
 
 ### Project1 - Creating a CMake project for a single file
 
@@ -162,7 +162,7 @@ And tada! You have created your first CMake project, and the binary is in the ro
 
 Try to execute it now!
 
-## Advanced (35 min max)
+## Advanced (45 min max)
 
 In this section you will learn to use CMake in a more advanced way. You will learn how to use CMake to link any library (like SFML) and how to build a custom library.
 
@@ -267,6 +267,8 @@ So you will do the same as before, but you will create a library in the "lib" di
 
 To access the "lib" directory, you will use the [`add_subdirectory`](https://cmake.org/cmake/help/latest/command/add_subdirectory.html) command inside the root CMakeLists.txt file.
 
-### Final Project - Creating a CMake project for your own tek or personnal project.
+## Final Project - Creating a CMake project for your own tek or personnal project. (no time limit)
+
+When arriving at this point, come see us, we will check your work to see if anything is missing.
 
 Now you know how to use CMake to compile a project, you can use it to compile your own project. Take any project and have fun. Kidding, CMake is not fun, only usefull.
