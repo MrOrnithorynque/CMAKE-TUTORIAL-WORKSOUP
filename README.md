@@ -5,6 +5,8 @@ In this tutorial, we will walk through the process of **installing CMake**, crea
 
 ## CMake summary
 
+> Basically : cross plateform Makefile generator
+
 CMake is a powerful and popular tool used to **build software** projects across **various platforms**. Its popularity stems from the fact that it allows developers to **generate platform-specific build** files from a single source configuration, making it an efficient and time-saving alternative to manually writing build files for each platform.
 
 <details>
@@ -162,7 +164,7 @@ And tada! You have created your first CMake project, and the binary is in the ro
 
 Try to execute it now!
 
-## Advanced (45 min max)
+## Advanced (65 min max)
 
 In this section you will learn to use CMake in a more advanced way. You will learn how to use CMake to link any library (like SFML) and how to build a custom library.
 
@@ -253,7 +255,7 @@ You will not need to link the SFML.
 
 > Libraries can be linked to other libraries too, using the same command as for executables.
 
-Use the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command to create a library.
+Use the [`add_library`](https://cmake.org/cmake/help/latest/command/add_library.html) command to create a library. (25 min max)
 
 Its behavior is the same as the [`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html) command, but it creates a library instead of an executable.
 
