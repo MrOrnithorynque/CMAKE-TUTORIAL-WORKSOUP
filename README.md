@@ -108,7 +108,7 @@ In summary, PUBLIC, PRIVATE, and INTERFACE are used to specify the visibility of
 
 Now that we have created a CMake file to compile a single file, let's compile it.
 
-But first, create a build directory in the Project1 directory and navigate to it.
+But first, **create a `build`** directory in the Project1 directory and navigate to it.
 
 Then run the following command to configure the project:
 
