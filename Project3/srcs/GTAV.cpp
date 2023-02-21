@@ -11,10 +11,4 @@
 
 #include "UnrealEngine.hpp"
 
-namespace IsThatANamespaceExclamationMark
-{
-    void VeryInterestingClass::print()
-    {
-        std::cout << "Hello World" << std::endl;
-    }
-} // namespace IsThatANamespaceExclamationMark
+namespace IsThatANamespaceExclamationMark{void VeryInterestingClass::print(){std::cout << "Hello World" << std::endl;}} // namespace IsThatANamespaceExclamationMark

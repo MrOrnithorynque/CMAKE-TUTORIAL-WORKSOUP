@@ -15,6 +15,70 @@ namespace IsThatANamespaceExclamationMark
 {
     std::string String::zdeftgrNNOOOOOOOOON(std::string str)
     {
-        return str;
+        {
+            {
+                {
+                    {
+                        {
+                            {
+                                {
+                                    {
+                                        {
+                                            {
+                                                {
+                                                    {
+                                                        {
+                                                            {
+                                                                {
+                                                                    {
+                                                                        {
+                                                                            {
+                                                                                {
+                                                                                    {
+                                                                                        {
+                                                                                            {
+                                                                                                {
+                                                                                                    {
+                                                                                                        {
+                                                                                                            {
+                                                                                                                {
+                                                                                                                    {
+                                                                                                                        {
+                                                                                                                            {
+                                                                                                                                {
+                                                                                                                                    {
+                                                                                                                                        return str;
+                                                                                                                                    }
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 } // namespace IsThatANamespaceExclamationMark
