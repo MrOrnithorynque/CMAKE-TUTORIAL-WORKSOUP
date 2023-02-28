@@ -164,7 +164,7 @@ And tada! You have created your first CMake project, and the binary is in the ro
 
 Try to execute it now!
 
-## Advanced (65 min max)
+## Advanced (40 min max)
 
 In this section you will learn to use CMake in a more advanced way. You will learn how to use CMake to link any library (like SFML) and how to build a custom library.
 
@@ -175,8 +175,6 @@ In this section you will learn to use CMake in a more advanced way. You will lea
 - target_link_libraries()
 - find_package()
 - include()
-- FetchContent_Declare()
-- FetchContent_MakeAvailable()
 
 The library you will link to your project is the SFML library.
 
@@ -216,28 +214,6 @@ Now reconfigure then compile the project...
 And tada! You have linked the SFML library to your project.
 
 Try to execute it now!
-
-#### Downloading a library
-
-With CMake, you can **download a library** from the internet and link it to your project. It is the main principle of CMake, **managing dependencies**.
-
-In this section, we will **download the SFML library** from the internet using CMake and link it to our project.
-
-Include the [`FetchContent`](https://cmake.org/cmake/help/latest/module/FetchContent.html) module with the [`include`](https://cmake.org/cmake/help/latest/command/include.html) command.
-
-> The include command is used to include a CMake file and so use the commands declared in it. (yes you can make your own commands with CMake)
-
-Use the [`FetchContent_Declare`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare) command to download the SFML library from the internet.
-
-> You can use the git repository of the SFML library to download it.
-
-Then use the [`FetchContent_MakeAvailable`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_makeavailable) command to make the library available to the project.
-
-> Because you are very intelligent, you did not put [`FetchContent_Declare`](https://cmake.org/cmake/help/latest/module/FetchContent.html#command:fetchcontent_declare) **AFTER** the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html). Yes?
-
-Use the [`target_link_libraries`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html) command to link the SFML library to the project.
-
-And finally, use the [`target_include_directories`](https://cmake.org/cmake/help/latest/command/target_include_directories.html) command to include the SFML library header files to the project.
 
 ### Project3 - Building a library (10 min max)
 
